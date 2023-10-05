@@ -10,7 +10,9 @@ function App() {
 
   const onSubmitHandler = async (e) => {
     e.preventDefault()
-    apiNoToken('api/v1/member/save', 'POST', member)
+    await apiNoToken('api/v1/member/save', 'POST', member)
+    getData()
+
   }
 
   const onBlurHandler = (e) => {
@@ -25,7 +27,7 @@ function App() {
     getData()
 
 
-  })
+  }, [])
 
   const getData = async () => {
     const { data } = await apiNoToken('api/v1/member/all', 'GET')
